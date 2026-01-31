@@ -1,0 +1,24 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 28c8d3f3-38a0-4b96-923f-52e313e200fa
+  # title:
+  # description:
+  # keywords: []
+  # authors: []
+  github: https://github.com/TUD-JB-OS/starterkit
+  
+extends:
+  - toc.yml     # includes table of contents
+  - export.yml  # includes export configurations
+  
+site:
+  template: book-theme
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
+  actions:
+      - title: PDF
+        url: ./exports/reporttex.pdf
+      - title: Typst PDF
+        url: ./exports/report_typst.pdf
