@@ -1,0 +1,7 @@
+version: 1
+project:
+  toc:
+    - file: content/Index.md
+    - file: content/Introduction.md
+    - file: content/Results.ipynb
+    - file: content/Conclusion.md

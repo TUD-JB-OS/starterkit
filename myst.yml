@@ -1,0 +1,27 @@
+version: 1
+project:
+  title: TU Delft's JB Starterkit
+  # description:
+  keywords: [Jupyter Book, Open Science, TU Delft, Starterkit]
+  authors: [Freek Pols]
+  github: https://github.com/TUD-JB-OS/starterkit
+  date: 2026-01-31
+  
+  bibliography:
+  - references/references.bib
+  
+extends:
+  - toc.yml     # includes table of contents
+  - export.yml  # includes export configurations
+  
+site:
+  template: book-theme
+  options:
+    favicon: figures/favicon.ico
+    logo: figures/tudelft.png
+    logo_dark: figures/tudelft-dark.png
+  actions:
+    - title: PDF
+      url: ./exports/report_tex.pdf
+    - title: Typst PDF
+      url: ./exports/report_typst.pdf
