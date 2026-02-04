@@ -3,7 +3,11 @@ project:
   title: TU Delft's JB Starterkit
   # description:
   keywords: [Jupyter Book, Open Science, TU Delft, Starterkit]
-  authors: [Freek Pols]
+  authors: 
+    - name: Student name
+      affiliation: TU Delft
+    - name: Supervisor name
+      affiliation: TU Delft  
   github: https://github.com/TUD-JB-OS/starterkit
   date: 2026-01-31
   
