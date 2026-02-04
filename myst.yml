@@ -21,6 +21,8 @@ project:
 extends:
   - toc.yml     # includes table of contents
   - export.yml  # includes export configurations
+  - plugins.yml
+  
   
 site:
   template: book-theme
