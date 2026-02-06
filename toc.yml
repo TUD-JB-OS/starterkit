@@ -6,3 +6,6 @@ project:
     - file: content/Introduction.md
     - file: content/Results.ipynb
     - file: content/Conclusion.md
+    - title: Appendix
+      children:
+        - file: content/Cheatsheet.md
