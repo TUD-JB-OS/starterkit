@@ -1,19 +1,23 @@
 # Title page
 
-::::{grid} 1 2
-:::{grid-item} Quick start
+::::{grid} 2
+:::{card} Quick start
 :link: ./Quickstart.md
+
+Some text
 :::
 
-:::{grid-item} Example
+:::{card} Example
 :link: https://luukfroling.github.io/BEP/
+
+some more
 :::
 
-:::{grid-item} Cheatsheet
+:::{card} Cheatsheet
 :link: ./Cheatsheet.md
 :::
 
-:::{grid-item} Manual
+:::{card} Manual
 :link: https://tud-jb-os.github.io/book/
 :::
 ::::
