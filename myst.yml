@@ -7,6 +7,11 @@ project:
   github: https://github.com/TUD-JB-OS/starterkit
   date: 2026-01-31
   
+    # used to load /reuse materials from other repositories
+  references:
+    myst-guide: https://mystmd.org/guide
+    JB-workshop: https://jupyter-book.github.io/workshop-template/
+    
   bibliography:
   - references/references.bib
   

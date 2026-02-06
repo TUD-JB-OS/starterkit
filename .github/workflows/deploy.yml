@@ -54,7 +54,7 @@ jobs:
 
       - name: Build PDF
         run: |
-          myst build --pdf --typst
+          myst build --typst --pdf
 
       - name: Upload Output PDF as Artifact
         uses: actions/upload-artifact@v4
