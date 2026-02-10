@@ -40,6 +40,10 @@ https://USERNAME.github.io/<reponame>
 ```
 
 
-You can also find the link easily from you GitHub repository home page under the "About" section on the right-hand side (illustrated in {numref}`Figure {number} <fig_folderstructure>`).
+You can also find the link easily from you GitHub repository home page under the "About" section on the right-hand side (illustrated in  {numref}`Figure {number} <fig_folderstructure>`).
 
 You also have automatically two pdf's based on a LaTeX thesis and Typst thesis template. Two buttons can be found at the top right corner to inspect these pdf's.
+
+```{figure} ../figures/folderstructure.png
+:label: fig_folderstructure
+```
