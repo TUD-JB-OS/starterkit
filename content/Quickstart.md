@@ -13,11 +13,13 @@ Follow these instruction to use the GitHub template repository to create your ow
 3. Choose a proper name of your repository (this will be also part of your URL!) and choose the option `public`.
 4. In your repository, click on `settings` and in the left menu on Pages and choose `Github Actions`
 
++++{no-pdf:"true"}
 ```{iframe} https://www.youtube.com/embed/UZpo_S8QNZI?si=dz-xbWzOyUUlIwJ5
 :name: vid_1
 
 Follow these steps to create your own repository from the template.
 ```
++++
 
 5. Click on `code` and click on ⚙ (the `gear-icon` near **About**) at the right site of the page. 
 6. Check the box **Use your GitHub Pages website**.
@@ -25,11 +27,13 @@ Follow these steps to create your own repository from the template.
 
 The book will now be deployed again - where now it can actually load GitHub pages. 
 
++++{no-pdf:"true"}
 ``` {iframe} https://www.youtube.com/embed/gQP_gjrh7rQ?si=DWiL_J27_a35RV__
 :name: vid_2
 
 Follow these steps to create your own GH Pages site from the template.
 ```
++++
 
 ## View your thesis online
 
