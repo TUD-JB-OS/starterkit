@@ -11,7 +11,7 @@ Follow these instruction to use the GitHub template repository to create your ow
 1. Go to the [starterkit repository ](https://github.com/TUD-JB-OS/starterkit)
 2. Click the green button `use this template` and click `create a new repository`.
 3. Choose a proper name of your repository (this will be also part of your URL!) and choose the option `public`.
-4. In your repository, click on `settings` and in the left menu on Pages and choose `Github Actions`
+4. In your repository, click on `settings` and in the left menu on `Pages` and choose `Github Actions`
 
 +++{"no-pdf":true}
 ```{iframe} https://www.youtube.com/embed/UZpo_S8QNZI?si=dz-xbWzOyUUlIwJ5
