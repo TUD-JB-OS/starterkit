@@ -1,0 +1,26 @@
+version: 1
+project:
+  exports:
+  authors:
+    - id: student
+      name: student without a name yet
+      affiliations:
+        - tud
+
+  contributors:
+    - id: supervisor-1
+      name: prof. dr. John Doe
+      affiliations:
+        - tud
+    - id: committee-1
+      name: Prof. Dr. C. Examiner
+      affiliations:
+        - tud
+    - id: committee-2
+      name: Dr. D. Examiner
+      affiliations:
+        - tud
+
+  affiliations:
+    - id: tud
+      institution: Delft University of Technology
