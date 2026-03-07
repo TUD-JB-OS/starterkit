@@ -9,3 +9,4 @@ project:
     - title: Appendix
       children:
         - file: content/Cheatsheet.md
+        - file: errorlog.md
