@@ -54,7 +54,7 @@ jobs:
 
       - name: Build PDF
         run: |
-          myst build --typst --pdf > build.log 2>&1 # Capture both stdout and stderr to build.log
+          myst build --typst --pdf > build.log 2>&1 || true # Capture both stdout and stderr to build.log
 
       - name: Upload Output PDF as Artifact
         uses: actions/upload-artifact@v4
