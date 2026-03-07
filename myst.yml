@@ -16,6 +16,9 @@ project:
     myst-guide: https://mystmd.org/guide
     JB-workshop: https://jupyter-book.github.io/workshop-template/
     
+  exclude: 
+    - datalog.md
+    
   bibliography:
     - references.bib
   

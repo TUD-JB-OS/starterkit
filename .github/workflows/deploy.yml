@@ -54,7 +54,7 @@ jobs:
 
       - name: Build PDF
         run: |
-          myst build --typst --pdf
+          myst build --typst --pdf > build.log 2>&1 # Capture both stdout and stderr to build.log
 
       - name: Upload Output PDF as Artifact
         uses: actions/upload-artifact@v4
@@ -62,6 +62,18 @@ jobs:
           name: Output PDF
           path: exports/*.pdf
           compression-level: 0
+
+
+      # Feedback errors in pdf build
+      - name: Write build errors to errorlog.md
+        if: always()
+        run: |
+          echo "# PDF Build Error Log" > errorlog.md
+          echo "" >> errorlog.md
+          echo '```text' >> errorlog.md
+          cat build.log >> errorlog.md
+          echo '```' >> errorlog.md
+          
 
       # To build the HTML site
       - name: Build HTML Assets
