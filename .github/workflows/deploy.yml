@@ -35,27 +35,40 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18.x
+
+      # Install MyST
       - name: Install MyST
         run: npm install -g mystmd
 
-        # to build the typst and latex pdf
+      # Install Python and dependencies
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # If you have a requirements file, prefer that:
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          # Minimum needed for execution:
+          pip install jupyter-server nbclient nbformat ipykernel jupyter-client ipython
+          # Common plotting libs (adjust to your stack):
+          pip install matplotlib numpy pandas scipy plotly
+          # If you use plotly static images:
+          # pip install plotly kaleido
+          # Make sure a kernel is visible:
+          python -m ipykernel install --user --name=python3
+
+      # Install Imagemick for conversion of figs
+      - name: Install Imagemagick
+        run: sudo apt-get install -y imagemagick
+
+      # Install typst
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
 
-      - name: Install LaTeX tooling
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            latexmk \
-            texlive-xetex \
-            texlive-latex-extra \
-            texlive-fonts-recommended \
-            fonts-lmodern
-
+      # Build pdf with typst, capturing logs for error reporting
       - name: Build PDF
         run: |
-          myst build --typst --pdf > build.log 2>&1 || true # Capture both stdout and stderr to build.log
+          myst build --typst > build.log 2>&1 || true # Capture both stdout and stderr to build.log
 
+      # Upload PDF as artifact
       - name: Upload Output PDF as Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -79,12 +92,13 @@ jobs:
 
       # To build the HTML site
       - name: Build HTML Assets
-        run: myst build --html
+        run: myst build --html --execute
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './_build/html'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
