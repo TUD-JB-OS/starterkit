@@ -7,9 +7,10 @@ project:
     #   id: report_tex
     
     - format: typst
-      template: https://github.com/TUD-JB-OS/typst_template.git #https://github.com/TUD-JB-OS/typst_template.git
+      template: https://github.com/TUD-JB-OS/typst_template.git 
       output: exports/report_typst.pdf
       id: report_typst
+
       cover_page_variant: graphical
       cover_background_image: content/figures/cover.png
       title_page_variant: "formal"

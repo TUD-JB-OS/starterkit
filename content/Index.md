@@ -35,18 +35,20 @@ This thesis reports on the use of Jupyter Book for open publishing at TU Delft -
 ````{grid} 2
 ```{card}
 :header: 📖 TUD publishing manual
-
+:url: https://tud-jb-os.github.io/book/
 Go to the manual of this starterkit
 ```
 ```{card}
-:header: 📈 Results
+:header: ❔ Questions?
+:url: mailto:c.f.j.pols@tudelft.nl
 
-jump to the results
+Send us an email at
 ```
 ```{card}
-:header: 📯 Conclusion
+:header: ❌ Error report
+:url: https://github.com/TUD-JB-OS/starterkit/issues
 
-jump to conclusions
+Report an error
 ```
 ```{card}
 :header: 📙 Jupyter book

@@ -1,6 +1,6 @@
 version: 1
 project:
-  exports:
+  
   authors:
     - id: student
       name: student without a name yet
