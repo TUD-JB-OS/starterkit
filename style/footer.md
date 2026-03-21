@@ -32,20 +32,14 @@ Want your own project? Visit our [starterkit](https://github.com/TUD-JB-OS/start
 ::::{grid} 1 1 3 3
 
 :::{div}
-
-- [About](https://mystmd.org/overview/ecosystem)
-- [Guide](https://mystmd.org/guide)
-- [Sandbox](https://mystmd.org/sandbox)
+- [Manual](https://tud-jb-os.github.io/book/)
+- [Jupyter](https://jupyterbook.org/)
 - [TU Delft](https://tudelft.nl)
 :::
 
 :::{div}
 
-```{card}
-:header: 📖 TUD publishing manual
-:url: https://tud-jb-os.github.io/book/
-Go to the manual of this starterkit
-```
+
 :::
 
 :::{div}
