@@ -1,19 +1,9 @@
 ---
 no-update-date: true
 ---
-% This defines the footer of the site, and is not parsed as a regular "page"
-% We point to it with the following in `myst.yml`:
-% site:
-% parts:
-% footer: footer.md
 
-% Here we use `grid` to add a basic grid structure to the HTML,
-% but the formatting column sizes are defined manually in css/footer.css
-% see the `grid-template-columns` line.
 :::::{grid} 3 3 5 5
 :class: outer-grid col-screen
-
-<!-- Project description -->
 
 ::::{div}
 
@@ -51,7 +41,11 @@ Want your own project? Visit our [starterkit](https://github.com/TUD-JB-OS/start
 
 :::{div}
 
-<!-- empty div -->
+```{card}
+:header: 📖 TUD publishing manual
+:url: https://tud-jb-os.github.io/book/
+Go to the manual of this starterkit
+```
 :::
 
 :::{div}

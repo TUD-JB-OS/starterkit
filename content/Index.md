@@ -30,30 +30,3 @@ Originally created by
 
 This thesis reports on the use of Jupyter Book for open publishing at TU Delft - especially bachelor and master thesis. It provides a quick setup for your open publishing project, including a template and guidelines for using Jupyter Book effectively. The starterkit is designed to help you create and share your research in an open and accessible way.
 
-+++ {"kind": "justified"}
-## Quick navigation
-````{grid} 2
-```{card}
-:header: 📖 TUD publishing manual
-:url: https://tud-jb-os.github.io/book/
-Go to the manual of this starterkit
-```
-```{card}
-:header: ❔ Questions?
-:url: mailto:c.f.j.pols@tudelft.nl
-
-Send us an email.
-```
-```{card}
-:header: ❌ Error report
-:url: https://github.com/TUD-JB-OS/starterkit/issues
-
-Report an error.
-```
-```{card}
-:header: 📙 Jupyter book
-:url: https://jupyterbook.org/
-
-Learn more about Jupyter book.
-```
-````
