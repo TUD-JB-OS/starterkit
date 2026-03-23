@@ -1,1 +1,3 @@
 # Methods
+
+Some method here

@@ -16,7 +16,7 @@ project:
     
   # the following chapters are excluded from building the pdf version
   exclude: 
-    - datalog.md 
+    - errorlog.md 
     - README.md
     - Cheatsheet.md
     
