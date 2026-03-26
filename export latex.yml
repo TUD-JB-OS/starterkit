@@ -1,0 +1,13 @@
+version: 1
+project:
+  exports:
+    - format: pdf
+      template: https://github.com/TUD-JB-OS/latex_template.git
+      output: exports/report_tex.pdf
+      id: report_tex
+    
+  # downloads:
+  #   - id: report_tex
+  #     title: PDF (LaTeX)
+  #   - id: report_typst
+  #     title: PDF (Typst)

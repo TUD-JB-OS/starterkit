@@ -1,11 +1,7 @@
 version: 1
 project:
   exports:
-    - format: pdf
-      template: https://github.com/TUD-JB-OS/latex_template.git
-      output: exports/report_tex.pdf
-      id: report_tex
-    
+
     - format: typst
       template: https://github.com/TUD-JB-OS/typst_template.git 
       output: exports/report_typst.pdf
