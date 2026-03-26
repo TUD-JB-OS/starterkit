@@ -6,7 +6,9 @@ project:
 
   github: https://github.com/TUD-JB-OS/starterkit
   date: 2026-01-31
-  
+  thumbnail: style/thumbnail.jpg
+  numbering: 
+    title: true
   # specify authors in authors.yml file
 
   # used to load /reuse materials from other repositories

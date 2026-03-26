@@ -1,0 +1,4 @@
+---
+numbering: 
+  headings: false
+---

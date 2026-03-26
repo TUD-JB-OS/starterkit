@@ -1,3 +1,8 @@
+---
+numbering: 
+  headings: false
+
+---
 # README
 
 This is the TU Delft starterkit for open publishing with Jupyter Book. It provides a skeleton with basic settings to have a head start with your thesis / project.

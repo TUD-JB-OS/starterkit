@@ -1,3 +1,8 @@
+---
+numbering: 
+  headings: false
+
+---
 +++{"no-pdf": true}
 # Cheatsheet
 

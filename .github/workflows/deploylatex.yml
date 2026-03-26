@@ -1,0 +1,53 @@
+
+name: MyST PDF builder [LaTeX]
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install LaTeX + Python packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            imagemagick \
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-fonts-recommended \
+            texlive-xetex \
+            latexmk \            
+            texlive-latex-extra \            
+            fonts-lmodern
+            nodejs \
+            npm
+          python -m pip install --upgrade pip
+          pip install mystmd
+      - name: Build PDFs
+        run: myst build --pdf
+      - name: Commit and push exports folder
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Add exports folder
+          git add -A exports
+
+          # Commit if there are changes
+          if ! git diff --cached --quiet; then
+            timestamp=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+            git commit -m "Update exports folder [La] (${timestamp})"
+            
+            # Push using the built-in GITHUB_TOKEN
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+          else
+            echo "No changes to commit"
+          fi   
+   
