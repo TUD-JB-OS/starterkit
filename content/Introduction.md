@@ -16,8 +16,8 @@ In an introduction. you often cite. Than can be done in various ways, either usi
 - `@doi:10.25080/hwcj9957` resulting in @doi:10.25080/hwcj9957
 
 **cite from bib-file**
-- `{cite:t}`bolyen2025jupyter`` resulting in {cite:t}`bolyen2025jupyter`
-- `{cite:p}`bolyen2025jupyter`` resulting in {cite:p}`bolyen2025jupyter`
+- `{cite:t}`jupyter2025`` resulting in {cite:t}`jupyter2025`
+- `{cite:p}`jupyter2025`` resulting in {cite:p}`jupyter2025`
 
 
 ## Background
