@@ -1,3 +1,4 @@
+# $env:BASE_URL = "/starterkit"
 version: 1
 project:
   title: TU Delft's JB Starterkit
@@ -41,6 +42,7 @@ site:
     favicon: style/favicon.ico
     logo: style/tudelft.png
     logo_dark: style/tudelft-dark.png
+    logo_url: https://jboss.tudelft.nl
     hide_authors: true
     style: style/custom.css
   actions:
@@ -50,5 +52,6 @@ site:
       url: ./exports/report_typst.pdf
   parts:
     footer: style/footer.md
+    banner: Visit our new website at [https://jboss.tudelft.nl](https://jboss.tudelft.nl) for the latest updates and resources!
 
 
