@@ -2,8 +2,8 @@
 
 version: 1
 project:
-  downloads:
-    - id: thesis-pdf
+#   downloads:
+#     - id: thesis-pdf
   exports:
     - id: thesis-pdf
       format: typst

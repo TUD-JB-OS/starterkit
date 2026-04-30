@@ -42,7 +42,7 @@ jobs:
         uses: actions/configure-pages@v3
       - uses: actions/setup-node@v4
         with:
-          node-version: 23
+          node-version: 24
 
       # Install MyST
       - name: Install MyST
@@ -73,15 +73,17 @@ jobs:
 
       # Build pdf with typst, capturing logs for error reporting
       - name: Build PDF
+        working-directory: starterkit-test
         run: |
           myst build --typst > build.log 2>&1 || true # Capture both stdout and stderr to build.log
 
       # Upload PDF as artifact
       - name: Upload Output PDF as Artifact
+        working-directory: starterkit-test
         uses: actions/upload-artifact@v4
         with:
           name: Output PDF
-          path: exports/*.pdf
+          path: starterkit-test/exports/*.pdf
           compression-level: 0
 
 
@@ -89,23 +91,24 @@ jobs:
       - name: Write build errors to errorlog.md
         if: always()
         run: |
-          echo "# PDF Build Error Log" > errorlog.md
-          echo "" >> errorlog.md
-          echo "**Build time:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> errorlog.md
-          echo "" >> errorlog.md
-          echo '```text' >> errorlog.md
-          grep -iE "error|warning" build.log >> errorlog.md || echo "No errors or warnings." >> errorlog.md
-          echo '```' >> errorlog.md
+          echo "# PDF Build Error Log" > starterkit-test/errorlog.md
+          echo "" >> starterkit-test/errorlog.md
+          echo "**Build time:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> starterkit-test/errorlog.md
+          echo "" >> starterkit-test/errorlog.md
+          echo '```text' >> starterkit-test/errorlog.md
+          grep -iE "error|warning" starterkit-test/build.log >> starterkit-test/errorlog.md || echo "No errors or warnings." >> starterkit-test/errorlog.md
+          echo '```' >> starterkit-test/errorlog.md
           
 
       # To build the HTML site
       - name: Build HTML Assets
+        working-directory: starterkit-test
         run: myst build --html --execute
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './_build/html'
+          path: './starterkit-test/_build/html'
 
       - name: Deploy to GitHub Pages
         id: deployment
