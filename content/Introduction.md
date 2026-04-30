@@ -40,3 +40,12 @@ As exporting to different formats is possible, it is not always desired. Some co
 A figure that is in the website but not in the PDF version.
 ```
 +++
+
+## With some code
+
+```{code-cell} python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.arange(0,100)
+```

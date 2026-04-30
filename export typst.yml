@@ -137,16 +137,16 @@ project:
       #    font_mono: JetBrains Mono
       #
       #    Accessible Sans preset:
-      #    font_body: Atkinson Hyperlegible Next
-      #    font_math: New Computer Modern Math
-      #    font_mono: JetBrains Mono
+      font_body: Atkinson Hyperlegible Next
+      font_math: New Computer Modern Math
+      font_mono: JetBrains Mono
       #    Optional matching Atkinson mono variant:
       #    font_mono: Atkinson Hyperlegible Mono
       #
       #
       # If you only want a code-font upgrade (recommended), keep the template defaults for
       # body and math and override only:
-      font_mono: JetBrains Mono
+      # font_mono: JetBrains Mono
 
 
 # ==============================================================================
