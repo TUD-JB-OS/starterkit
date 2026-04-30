@@ -146,7 +146,7 @@ project:
       #
       # If you only want a code-font upgrade (recommended), keep the template defaults for
       # body and math and override only:
-      # font_mono: JetBrains Mono
+      font_mono: JetBrains Mono
 
 
 # ==============================================================================
