@@ -29,11 +29,16 @@ project:
   jupyter:
     binder:
       repo: https://github.com/executablebooks/thebe-binder-base
-  
+
+  plugins:
+    - https://github.com/jupyter-book/myst-plugins/releases/download/iframe-to-qr-pdf/iframe-to-qr-pdf.mjs\
+    - plugins/page-last-updated.mjs
+    - plugins/typst_conversion-support.mjs
+    - https://raw.githubusercontent.com/choldgraf/myst-lightbox/main/src/index.mjs
+
 extends:
   - toc.yml       # includes table of contents
   - export typst.yml    # includes export configurations
-  - plugins.yml   # includes plugin configurations
   - authors.yml   # includes author and contributor information
   - options.yml    # includes project-specific options and metadata
   
