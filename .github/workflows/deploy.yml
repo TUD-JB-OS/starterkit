@@ -1,114 +1,97 @@
-# This file was created automatically with `myst init --gh-pages` 🪄 💚
-# Ensure your GitHub Pages settings for this repository are set to deploy with **GitHub Actions**.
-
 name: MyST GitHub Pages Deploy
+
 on:
   push:
     branches: [main]
+
 env:
-  # `BASE_URL` determines, relative to the root of the domain, the URL that your site is served from.
-  # E.g., if your site lives at `https://mydomain.org/myproject`, set `BASE_URL=/myproject`.
-  # If, instead, your site lives at the root of the domain, at `https://mydomain.org`, set `BASE_URL=''`.
   BASE_URL: /${{ github.event.repository.name }}
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: pages
   cancel-in-progress: false
+
 jobs:
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
+
     env:
       TYPST_FONT_PATHS: ${{ github.workspace }}/typst_template/src/assets/fonts
+
     steps:
-      - uses: actions/checkout@v4
-        with:
-          path: starterkit-test
-      - name: Checkout Typst template
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Checkout Typst template fonts
         uses: actions/checkout@v4
         with:
           repository: TUD-JB-OS/typst_template
           ref: main
           path: typst_template
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - uses: actions/setup-node@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 24
 
-      # Install MyST
       - name: Install MyST
         run: npm install -g mystmd
 
-      # Install Python and dependencies
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          # If you have a requirements file, prefer that:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          # Minimum needed for execution:
           pip install jupyter-server nbclient nbformat ipykernel jupyter-client ipython
-          # Common plotting libs (adjust to your stack):
           pip install matplotlib numpy pandas scipy plotly
-          # If you use plotly static images:
-          # pip install plotly kaleido
-          # Make sure a kernel is visible:
           python -m ipykernel install --user --name=python3
 
-      # Install Imagemick for conversion of figs
-      - name: Install Imagemagick
-        run: sudo apt-get install -y imagemagick
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
 
-      # Install typst
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
 
-      # Build pdf with typst, capturing logs for error reporting
       - name: Build PDF
-        working-directory: starterkit-test
         run: |
-          myst build --typst > build.log 2>&1 || true # Capture both stdout and stderr to build.log
+          myst build --typst > build.log 2>&1 || true
 
-      # Upload PDF as artifact
       - name: Upload Output PDF as Artifact
-        working-directory: starterkit-test
         uses: actions/upload-artifact@v4
         with:
           name: Output PDF
-          path: starterkit-test/exports/*.pdf
+          path: exports/*.pdf
           compression-level: 0
 
-
-      # Feedback errors in pdf build
       - name: Write build errors to errorlog.md
         if: always()
         run: |
-          echo "# PDF Build Error Log" > starterkit-test/errorlog.md
-          echo "" >> starterkit-test/errorlog.md
-          echo "**Build time:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> starterkit-test/errorlog.md
-          echo "" >> starterkit-test/errorlog.md
-          echo '```text' >> starterkit-test/errorlog.md
-          grep -iE "error|warning" starterkit-test/build.log >> starterkit-test/errorlog.md || echo "No errors or warnings." >> starterkit-test/errorlog.md
-          echo '```' >> starterkit-test/errorlog.md
-          
+          echo "# PDF Build Error Log" > errorlog.md
+          echo "" >> errorlog.md
+          echo "**Build time:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> errorlog.md
+          echo "" >> errorlog.md
+          echo '```text' >> errorlog.md
+          grep -iE "error|warning" build.log >> errorlog.md || echo "No errors or warnings." >> errorlog.md
+          echo '```' >> errorlog.md
 
-      # To build the HTML site
       - name: Build HTML Assets
-        working-directory: starterkit-test
         run: myst build --html --execute
 
-      - name: Upload artifact
+      - name: Upload HTML artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './starterkit-test/_build/html'
+          path: ./_build/html
 
       - name: Deploy to GitHub Pages
         id: deployment
