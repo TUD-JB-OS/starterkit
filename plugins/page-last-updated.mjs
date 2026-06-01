@@ -1,39 +1,45 @@
-// JB plugin: insert the latest Git update date once per page.
+// JB plugin checking the latest update per page, slotting in that date in the frontmatter
 
-import { execFileSync } from 'child_process';
+import { execSync } from 'child_process';
 import path from 'path';
 import { readFileSync } from 'fs';
 
+// Cache per build-run (key = absolute file path)
 const gitDateCache = new Map();
-const insertedForFile = new Set();
 
+// Function to read frontmatter - used to check if file is excluded via frontmatter
 function getFrontmatter(srcPath) {
   try {
     const text = readFileSync(srcPath, 'utf-8');
+    // Regex to capture everything between the first two sets of ---
     const match = /^---\r?\n([\s\S]*?)\r?\n---/.exec(text);
+    
     if (!match) return null;
 
+    const frontmatterBlock = match[1];
     const data = {};
-    for (const line of match[1].split('\n')) {
-      const [key, ...valueParts] = line.split(':');
-      if (!key || !valueParts.length) continue;
 
-      const value = valueParts.join(':').trim();
-      if (value.toLowerCase() === 'true') data[key.trim()] = true;
-      else if (value.toLowerCase() === 'false') data[key.trim()] = false;
-      else data[key.trim()] = value;
-    }
+    // Split by line and parse key-value pairs manually
+    frontmatterBlock.split('\n').forEach(line => {
+      const [key, ...valueParts] = line.split(':');
+      if (key && valueParts.length > 0) {
+        const value = valueParts.join(':').trim();
+        
+        // Basic type conversion
+        if (value.toLowerCase() === 'false') data[key.trim()] = false;
+        else if (value.toLowerCase() === 'true') data[key.trim()] = true;
+        else data[key.trim()] = value;
+      }
+    });
 
     return data;
-  } catch {
+  } catch (err) {
     return null;
   }
 }
 
 function getRepoRoot() {
-  return execFileSync('git', ['rev-parse', '--show-toplevel'], {
-    encoding: 'utf8',
-  }).trim();
+  return execSync('git rev-parse --show-toplevel', { encoding: 'utf8' }).trim();
 }
 
 function getGitUpdatedISOForFile(filePathAbs) {
@@ -41,17 +47,17 @@ function getGitUpdatedISOForFile(filePathAbs) {
 
   try {
     const repoRoot = getRepoRoot();
-    const rel = path.relative(repoRoot, filePathAbs).replace(/\\/g, '/');
 
-    const iso = execFileSync(
-      'git',
-      ['log', '-1', '--follow', '--format=%cI', '--', rel],
-      {
-        cwd: repoRoot,
-        encoding: 'utf8',
-        stdio: ['ignore', 'pipe', 'ignore'],
-      },
-    ).trim();
+    // checks relative path
+    const rel = path.relative(repoRoot, filePathAbs).replace(/\\/g, '/'); // windows-safe
+
+    // --follow = checks renamed files
+    // %cI = strict ISO 8601
+    const iso = execSync(`git log -1 --follow --format=%cI -- "${rel}"`, {
+      cwd: repoRoot,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
 
     const result = iso || null;
     gitDateCache.set(filePathAbs, result);
@@ -62,68 +68,54 @@ function getGitUpdatedISOForFile(filePathAbs) {
   }
 }
 
+// returns date in given format
 function formatDate(iso) {
-  return new Intl.DateTimeFormat('en-GB', {
-    year: 'numeric',
-    month: 'short',
-    day: '2-digit',
-  }).format(new Date(iso));
+  const d = new Date(iso);
+  return new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'short', day: '2-digit' }).format(d);
 }
 
-function hasInsertedDate(node) {
-  return node.children?.some(
-    (child) =>
-      child?.type === 'div' &&
-      typeof child.class === 'string' &&
-      child.class.includes('updated-date-container'),
-  );
-}
-
+// slots in the date per page
 const updateDateTransform = {
   name: 'update-date',
   stage: 'document',
   plugin: () => {
-    return (tree, file) => {
-      if (!file?.path) return tree;
-      if (!Array.isArray(tree?.children)) return tree;
+    return (node, file) => {
+      if (!file?.path) return node;
+      
+      // Return if PDF export
+      const isPDF = process.argv.some(arg => arg.includes("pdf") || arg.includes("typst"));
+      if (isPDF) return node; 
 
-      // Only mutate the actual document/root node.
-      if (tree.type && !['root', 'document'].includes(tree.type)) return tree;
-
-      const isPDF = process.argv.some(
-        (arg) => arg.includes('pdf') || arg.includes('typst'),
-      );
-      if (isPDF) return tree;
-
-      const absPath = path.resolve(file.path);
-
-      // Hard guard: once per file per build run.
-      if (insertedForFile.has(absPath)) return tree;
-
-      const frontmatter = getFrontmatter(absPath);
-      if (frontmatter?.['no-update-date'] === true) return tree;
-
-      if (hasInsertedDate(tree)) {
-        insertedForFile.add(absPath);
-        return tree;
+      // Return if frontmatter has no-update-date: true
+      const frontmatter = getFrontmatter(file.path);
+      if (frontmatter?.['no-update-date'] === true) {
+          return node;
       }
 
-      const iso = getGitUpdatedISOForFile(absPath);
-      if (!iso) return tree;
+      const iso = getGitUpdatedISOForFile(file.path);
 
-      tree.children.unshift({
-        type: 'div',
-        class: 'font-light text-sm mb-4 updated-date-container',
-        children: [{ type: 'text', value: `Updated: ${formatDate(iso)}` }],
-      });
+      if (iso) {
+        node.children.unshift({
+          type: 'div',
+          class: 'font-light text-sm mb-4 updated-date-container',
+          children: [{ type: 'text', value: `Updated: ${formatDate(iso)}` }],
+        });
+      } else {
+        node.children.unshift({
+          type: 'div',
+          class: 'font-light text-sm mb-4',
+          children: [],
+        });
+      }
 
-      insertedForFile.add(absPath);
-      return tree;
+      return node;
     };
   },
 };
 
-export default {
+const plugin = {
   name: 'Auto Update Date Plugin',
   transforms: [updateDateTransform],
 };
+
+export default plugin;
