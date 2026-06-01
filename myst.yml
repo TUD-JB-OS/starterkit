@@ -37,7 +37,7 @@ project:
     - plugins/page-last-updated.mjs
     - plugins/typst_conversion-support.mjs
     - plugins/lightbox.mjs
-    
+    - https://github.com/choldgraf/myst-iconify/releases/latest/download/index.mjs
 
 extends:
   - toc.yml             # includes table of contents
@@ -68,5 +68,5 @@ site:
   parts:
     footer:       style/footer.md
     banner:       Visit our new website at [https://jboss.tudelft.nl](https://jboss.tudelft.nl) for the latest updates and resources! See also our newest [Typst template](https://github.com/TUD-JB-OS/typst_template.git) version
-
+    navbar_end:   [{icon}`catppuccin:pdf`](./exports/thesis.pdf)
 # 
