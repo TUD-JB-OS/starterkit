@@ -57,13 +57,7 @@ site:
     hide_authors: true
     style:        style/custom.css
   
-  # include links to downloads
-  actions:
-    - title:      PDF
-      url:        ./exports/report_tex.pdf
-    - title:      Typst PDF
-      url:        ./exports/thesis.pdf
-  
+
   # custom parts
   parts:
     footer:       style/footer.md
