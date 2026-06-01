@@ -1,0 +1,1 @@
+[{icon}`catppuccin:pdf`](../exports/thesis.pdf)
