@@ -1,5 +1,5 @@
 ---
-no-update-date: true<!-- https://icon-sets.iconify.design/ -->
+no-update-date: true
 ---
 
 [{icon}`catppuccin:pdf`](../exports/thesis.pdf)
