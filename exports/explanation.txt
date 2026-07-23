@@ -1,0 +1,1 @@
+This file is not used. Typst output is generated only as artefact. The LaTeX file is made only when the deploy file is triggered manually.

@@ -1,43 +1,54 @@
 version: 1
 project:
   title: TU Delft's JB Starterkit
-  # description:
-  keywords: [Jupyter Book, Open Science, TU Delft, Starterkit]
-  authors: 
-    - name: Student name
-      affiliation: TU Delft
-    - name: Supervisor name
-      affiliation: TU Delft  
+  keywords:
+  - Jupyter Book
+  - Open Science
+  - TU Delft
+  - Starterkit
   github: https://github.com/TUD-JB-OS/starterkit
   date: 2026-01-31
-  
-  # used to load /reuse materials from other repositories
+  thumbnail: style/thumbnail.jpg
+  numbering:
+    title: true
   references:
     myst-guide: https://mystmd.org/guide
     JB-workshop: https://jupyter-book.github.io/workshop-template/
-
+  exclude:
+  - errorlog.md
+  - README.md
+  - content/Cheatsheet.md
   bibliography:
-    - references.bib
-  
+  - references.bib
   jupyter:
     binder:
       repo: https://github.com/executablebooks/thebe-binder-base
-  
+  plugins:
+  - https://github.com/jupyter-book/myst-plugins/releases/download/iframe-to-qr-pdf/iframe-to-qr-pdf.mjs\
+  - plugins/page-last-updated.mjs
+  - plugins/typst_conversion-support.mjs
+  - plugins/lightbox.mjs
 extends:
-  - toc.yml     # includes table of contents
-  - export.yml  # includes export configurations
-  - plugins.yml
-  
-  
+- toc.yml
+- export_typst.yml
+- authors.yml
+- options.yml
 site:
   template: book-theme
   options:
-    favicon: figures/favicon.ico
-    logo: figures/tudelft.png
-    logo_dark: figures/tudelft-dark.png
+    favicon: style/favicon.ico
+    logo: style/tudelft.png
+    logo_dark: style/tudelft-dark.png
+    logo_url: https://jboss.tudelft.nl
     hide_authors: true
+    style: style/custom.css
   actions:
-    - title: PDF
-      url: ./exports/report_tex.pdf
-    - title: Typst PDF
-      url: ./exports/report_typst.pdf
+  - title: PDF
+    url: ./exports/report_tex.pdf
+  - title: Typst PDF
+    url: ./exports/thesis.pdf
+  parts:
+    footer: style/footer.md
+    banner: Visit our new website at [https://jboss.tudelft.nl](https://jboss.tudelft.nl)
+      for the latest updates and resources! See also our newest [Typst template](https://github.com/TUD-JB-OS/typst_template.git)
+      version

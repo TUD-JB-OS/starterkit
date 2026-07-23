@@ -1,1 +1,3 @@
 # Conclusion
+
+In this study we investigated whether and how scientific publishing is feasible through the use of Jupyter Book. Using a starterkit template repository which can be easily accessed and used, a head start is provided. The [manual](LINK) provides detailed information to make more technical elements accessible. Hence, we conclude that Jupyter Book provides a feasible way of publishing scientific content - at least for bachelor and master thesis.
