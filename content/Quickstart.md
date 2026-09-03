@@ -40,7 +40,7 @@ You can work directly in the GitHub IDE, but you may prefer to work on the proje
 3. **Clone the repository:** Open a terminal, such as the VS Code terminal, PowerShell, or another terminal of your choice. Navigate to the folder where you want to store the project and run: `git clone <repository-link>` This creates a local copy of the repository on your computer. Next, navigate into the newly created project folder: `cd <project-folder>`
 4. **Install the project dependencies** From inside the project folder, run: `pixi install` Pixi will install all dependencies required to work on the project.
 
-Three Pixi tasks are provided to make working with the project easier:
+Three Pixi tasks are provided to make working with the project easier. You can run the following commands in the terminal:
 
 - **Open the editor:** `pixi run editor` will open jupyterlab as editor
 - **Preview the Jupyter Book:** `pixi run preview` will open a jupyter server which runs your jupyter book as website in the browser
