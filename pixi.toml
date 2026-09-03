@@ -19,6 +19,6 @@ scipy = ">=1.18.0,<2"
 ipywidgets = ">=8.1.9,<9"
 typst = ">=0.15.1,<0.16"
 jupytext = ">=1.19.5,<2"
-
+nodejs = "24.*"
 [pypi-dependencies]
 jupyterlab-myst = ">=2.7.0, <3"

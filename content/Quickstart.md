@@ -1,4 +1,4 @@
-
+(quickstart)=
 # Use the starterkit
 
 > The instructions on this page guide you through the process of setting up your own thesis (repo) by creating a (new) GitHub repository using the starterkit template repository.
