@@ -3,6 +3,8 @@ project:
   toc:
     - file: content/Index.md
     - file: content/Quickstart.md
+      children:
+        - file: content/firststeps.md
     - file: content/Introduction.md
     - file: content/Theory.md
     - file: content/Methods.md

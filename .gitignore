@@ -1,3 +1,7 @@
 # MyST build outputs
 _build
 *.pdf
+.ipynb_checkpoints
+
+.pixi/*
+!.pixi/config.toml
