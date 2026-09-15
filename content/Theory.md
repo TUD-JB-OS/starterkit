@@ -1,3 +1,8 @@
+---
+kernelspec:
+  name: python3
+  display_name: 'Python 3'
+---
 # Theory
 
 We can have inline equations like $E=mc^2$ or display equations like:
