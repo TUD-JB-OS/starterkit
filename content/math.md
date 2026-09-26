@@ -7,6 +7,13 @@ kernelspec:
 
 :::{proof} Proof 
 :class: dropdown
-
-Some proof 
+:open: true
+:label: proof_1
+For any integer $n$, the sum of two consecutive integers is odd. Indeed,
+\[
+n+(n+1)=2n+1.
+\]
+Since $2n$ is even, $2n+1$ is odd.
 :::
+
+See @proof_1 for an example.
