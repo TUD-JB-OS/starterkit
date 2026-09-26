@@ -13,5 +13,6 @@ project:
     - title: Appendix
       children:
         - file: content/Cheatsheet.md
+        - file: content/math.md
         - file: errorlog.md
         - file: README.md
