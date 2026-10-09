@@ -1,7 +1,7 @@
 # $env:BASE_URL = "/starterkit"
 version: 1
 project:
-  title: JBOSS test page
+  title: TU Delft's JB Starterkit
   # description:
   keywords: [Jupyter Book, Open Science, TU Delft, Starterkit]
 

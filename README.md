@@ -5,11 +5,12 @@ numbering:
 ---
 # README
 
-This is for testing for the JBOSS project.
+This is the TU Delft starterkit for open publishing with Jupyter Book. It provides a skeleton with basic settings to have a head start with your thesis / project.
 
-- testing new workflow
-
-
+It includes:
+- a github deploy file taking care of deploying the website and building a pdf
+- basic content files that can be altered to fit your project
+- yml files in the root folder to configure the book and the pdf build
 
 
 ## 🕵 Where to start

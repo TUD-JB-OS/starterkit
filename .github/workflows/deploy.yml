@@ -1,25 +1,98 @@
-# Use this workflow to make use of the central workflows from https://github.com/TUD-JB-OS/deploy/.github/workflows/
-name: Deploy
+name: MyST GitHub Pages Deploy
 
 on:
   push:
     branches: [main]
-      
+
+env:
+  BASE_URL: /${{ github.event.repository.name }}
+
 permissions:
   contents: read
   pages: write
   id-token: write
-  
 
-
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
-    uses: TUD-JB-OS/deploy/.github/workflows/jboss.yml@main
-    with:
-      build_typst_pdf: false
-      build_latex_pdf: false
-      execute_python: false
-      run_nb_checks: false
-      run_fig_checks: false
-      run_code_checks: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    env:
+      TYPST_FONT_PATHS: ${{ github.workspace }}/typst_template/src/assets/fonts
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Checkout Typst template fonts
+        uses: actions/checkout@v4
+        with:
+          repository: TUD-JB-OS/typst_template
+          ref: main
+          path: typst_template
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install MyST
+        run: npm install -g mystmd
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install jupyter-server nbclient nbformat ipykernel jupyter-client ipython
+          pip install matplotlib numpy pandas scipy plotly ipywidgets
+          python -m ipykernel install --user --name=python3
+
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+
+      - name: Build PDF
+        run: |
+          myst build --typst > build.log 2>&1 || true
+
+      - name: Upload Output PDF as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Output PDF
+          path: exports/*.pdf
+          compression-level: 0
+
+      - name: Write build errors to errorlog.md
+        if: always()
+        run: |
+          echo "# PDF Build Error Log" > errorlog.md
+          echo "" >> errorlog.md
+          echo "**Build time:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> errorlog.md
+          echo "" >> errorlog.md
+          echo '```text' >> errorlog.md
+          grep -iE "error|warning" build.log >> errorlog.md || echo "No errors or warnings." >> errorlog.md
+          echo '```' >> errorlog.md
+
+      - name: Build HTML Assets
+        run: myst build --html --execute
+
+      - name: Upload HTML artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_build/html
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
