@@ -6,7 +6,7 @@ project:
   keywords: [Jupyter Book, Open Science, TU Delft, Starterkit]
 
   github: https://github.com/TUD-JB-OS/starterkit # change this to your own repository
-  date: 2026-01-31
+  date: 2026-10-09
   thumbnail: style/thumbnail.jpg
   numbering: 
     title: true
@@ -41,7 +41,8 @@ project:
 
 extends:
   - toc.yml             # includes table of contents
-  - export typst.yml    # includes export configurations
+  - export_typst.yml    # includes export configurations
+  - export_latex.yml    # includes export configurations
   - authors.yml         # includes author and contributor information
   - options.yml         # includes project-specific options and metadata
   
