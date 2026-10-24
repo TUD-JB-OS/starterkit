@@ -10,13 +10,13 @@ permissions:
   pages: write
   id-token: write
   
-
 jobs:
   deploy:
     uses: TUD-JB-OS/deploy/.github/workflows/jboss.yml@main
     with:
       build_typst_pdf: true
       build_latex_pdf: false
-      execute_python: true
+      execute_python: false
       run_nb_checks: false
-      run_fig_checks: true
+      run_fig_checks: false
+      dependency_manager: pixi

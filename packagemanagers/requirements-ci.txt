@@ -1,0 +1,8 @@
+-r requirements.txt
+
+jupyter-server
+nbclient
+nbformat
+ipykernel
+jupyter-client
+ipython

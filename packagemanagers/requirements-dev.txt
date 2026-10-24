@@ -1,0 +1,5 @@
+-r requirements.txt
+
+jupyterlab>=4.6.3,<5
+jupytext>=1.19.5,<2
+jupyterlab-myst>=2.7.0,<3

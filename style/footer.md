@@ -30,7 +30,7 @@ Want your own project? Visit our [starterkit](https://github.com/TUD-JB-OS/start
 ::::{grid} 1 1 3 3
 
 :::{div}
-- [Manual](https://tud-jb-os.github.io/book/)
+- [Manual](https://jboss.tudelft.nl/manual)
 - [Help](mailto:c.f.j.pols@tudelft.nl)
 - [Jupyter](https://jupyterbook.org/)
 - [TU Delft](https://tudelft.nl)
