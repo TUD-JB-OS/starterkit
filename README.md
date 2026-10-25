@@ -14,7 +14,7 @@ It includes:
 
 
 ## 🕵 Where to start
-Already know about Jupyter Book, familiar with GitHub or GitLab, Markdown... start with cloning the [starterkit](https://github.com/new?template_name=starterkit&template_owner=TUD-JB-OS) and start writing working on your project. New to the ecosystem? Start with [the manual](https://tud-jb-os.github.io/book), and then move on to the starterkit.
+Already know about Jupyter Book, familiar with GitHub or GitLab, Markdown... start with cloning the [starterkit](https://github.com/new?template_name=starterkit&template_owner=TUD-JB-OS) and start writing working on your project. New to the ecosystem? Start with [the manual](https://jboss.tudelft.nl/manual), and then move on to the starterkit.
 
 
 ## 🏁 Purpose
@@ -30,7 +30,7 @@ You are free to:
 * Adapt — remix, transform, and build upon the material for any non-commercial purpose provided proper attribution is given.
 
 ## ❌ Errors
-If you find any errors in the content, please report them by opening an issue on the [GitHub repository](https://github.com/TUD-JB-OS/book/issues).
+If you find any errors in the content, please report them by opening an issue on the [GitHub repository](https://github.com/TUD-JB-OS/starterkit/issues).
 
 ## 💰 Funding
 This project has received funding from the [Delft University of Technology Open Science Fund (2025-2026)](https://www.tudelft.nl/en/open-science/articles-tu-delft/mainstreaming-open-science-fund-2025-2026).
