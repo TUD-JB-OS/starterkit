@@ -6,7 +6,7 @@ project:
     - id: thesis-pdf
       format: typst
       template: https://github.com/TUD-JB-OS/typst_template.git
-      output: ./exports/typst_template_example.pdf
+      output: ./exports/output.pdf
 
 # ==============================================================================
 # Document Structure and Front Matter
