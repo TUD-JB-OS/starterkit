@@ -62,6 +62,6 @@ site:
   # custom parts
   parts:
     footer:       style/footer.md
-    banner:       Visit our new website at [https://jboss.tudelft.nl](https://jboss.tudelft.nl) for the latest updates and resources! See also our newest [Typst template](https://github.com/TUD-JB-OS/typst_template.git) version
+    banner:       Our website at [https://jboss.tudelft.nl](https://jboss.tudelft.nl) is temporarily unavailable.
     navbar_end:   style/navbar_end.md
 # 

@@ -1,25 +1,20 @@
-
 version: 1
 project:
-#   downloads:
-#     - id: thesis-pdf
+  downloads:
+    - id: thesis-pdf
   exports:
-    - format: typst
-      template: https://github.com/TUD-JB-OS/typst_template.git 
-      output: ./exports/output.pdf
-      id: typst_output
+    - id: thesis-pdf
+      format: typst
+      template: https://github.com/TUD-JB-OS/typst_template.git
+      output: ./exports/typst_template_example.pdf
 
 # ==============================================================================
 # Document Structure and Front Matter
 # ==============================================================================
-      # Render a separate cover page before the title page. Default: true.
-      show_cover_full: true
-      
-      # Render the title page after the cover page. Default: true.
-      show_title_page: true
-      
-      # Show affiliation lines under supervisor and committee names on the detailed title-page layouts. Default: true.
-      show_contributor_affiliations: true
+
+      show_cover_full: true               # Render a separate cover page before the title page. Default: true.
+      show_title_page: true               # Render the title page after the cover page. Default: true.
+      show_contributor_affiliations: true # Show affiliation lines under supervisor and committee names. Default: true.
 
       # Order of fixed front-matter part pages before the table of contents.
       # Part files are still declared in myst.yml under project.parts; this
@@ -31,17 +26,11 @@ project:
 # ==============================================================================
 # Table of Contents and Lists of Figures/Tables
 # ==============================================================================
-      # Render the table of contents in the front matter. Default: true.
-      show_toc: true
-      
-      # Maximum heading depth shown in the table of contents. Default: 2.
-      toc_depth: 2
-      
-      # Render a list of figures in the front matter. Default: false.
-      show_list_of_figures: false
-      
-      # Render a list of tables in the front matter. Default: false.
-      show_list_of_tables: false
+
+      show_toc: true                 # Render the table of contents in the front matter. Default: true.
+      toc_depth: 2                   # Maximum heading depth shown in the table of contents. Default: 2.
+      show_list_of_figures: false    # Render a list of figures in the front matter. Default: false.
+      show_list_of_tables: false     # Render a list of tables in the front matter. Default: false.
 
 # ==============================================================================
 # Verso Page Options (for main matter chapters)
@@ -50,27 +39,19 @@ project:
       # when required to ensure the main matter chapters start on recto page:
       # When the page statement is enabled, the inserted verso page displays
       # the statement below instead of remaining fully blank. Default: false.
+
       show_verso_blank_page_statement: true
-      
-      # Statement printed on the inserted verso page.
-      verso_blank_page_statement: This page is intentionally left blank.
+      verso_blank_page_statement: This page is intentionally left blank. # Statement printed on the inserted verso page.
 
 # ==============================================================================
 # Bibliography Options 
 # ==============================================================================
-      # Render the bibliography section after the document content. Default: true.
-      show_bibliography: true
-           
-      # Title used for the bibliography section. Default: Bibliography.
-      bibliography_title: Bibliography
-      
-      # Bibliography style passed to Typst. Default: chicago-author-date.
-      # Common built-in Typst styles include:
-      # ieee | apa | mla | chicago-author-date | chicago-notes
-      bibliography_style: chicago-author-date
-      
-      # Number the bibliography as a top-level heading. Default: false.
-      bibliography_numbered_heading: false
+
+      show_bibliography: true                 # Render the bibliography section after the document content. Default: true.
+      bibliography_title: Bibliography        # Title used for the bibliography section. Default: Bibliography.
+      bibliography_style: chicago-author-date # Bibliography style passed to Typst. Options: ieee | apa | mla | chicago-author-date | chicago-notes
+      bibliography_numbered_heading: false    # Number the bibliography as a top-level heading. Default: false.
+
 
 # ==============================================================================
 # Page Layout and Styling
@@ -88,11 +69,10 @@ project:
 # ==============================================================================
 # Typography / Font Options      
 # ==============================================================================
-      # Base text size in points. Default: 11.
-      font_size_pt: 11
-      
-      # Paragraph leading in em units. Default: 0.7.
-      line_spacing_em: .7
+
+      font_size_pt: 10     # Base text size in points. Default: 11.
+      line_spacing_em: .7   # Paragraph leading in em units. Default: 0.7.
+
 
       # The template defaults stay on Typst's built-in families so exports work
       # even before you enable bundled fonts.
@@ -136,16 +116,16 @@ project:
       #    font_mono: JetBrains Mono
       #
       #    Accessible Sans preset:
-      # font_body: Atkinson Hyperlegible Next
-      # font_math: New Computer Modern Math
-      # font_mono: JetBrains Mono
+      #    font_body: Atkinson Hyperlegible Next
+      #    font_math: New Computer Modern Math
+      #    font_mono: JetBrains Mono
       #    Optional matching Atkinson mono variant:
       #    font_mono: Atkinson Hyperlegible Mono
       #
       #
       # If you only want a code-font upgrade (recommended), keep the template defaults for
       # body and math and override only:
-      font_mono: JetBrains Mono
+      # font_mono: JetBrains Mono
 
 
 # ==============================================================================
@@ -175,19 +155,11 @@ project:
       cover_background_image: content/assets/cover.png
       # Legacy alias: cover_image
       
-      # Graphical-cover contrast preset: white-on-dark | black-on-light. Default: white-on-dark.
-      cover_graphical_appearance: white-on-dark
-      
-      # Graphical-cover alignment for the title box and bottom branding block: left | center. Default: left.
-      cover_graphical_alignment: center
-      
-      cover_logo_alignment: left
-      
-      # Optional override for the translucent title-box base color: black | white | hex color.
-      # cover_title_box_color: "#101820"
-      
-      # Opacity of the title box on the graphical cover, from 0 to 100. Default: 55.
-      cover_title_box_opacity_pct: 80
+      cover_graphical_appearance: white-on-dark            # Graphical-cover contrast preset: white-on-dark | black-on-light. Default: white-on-dark.
+      cover_graphical_alignment: center                    # Graphical-cover alignment for the title box: left | center. Default: left.
+      cover_logo_alignment: left                           # Graphical-cover alignment for the bottom branding block: left | center. Default: left.
+      # cover_title_box_color: "#00A6D6"                   # Optional override for the translucent title-box base color: black | white | hex color. 
+      cover_title_box_opacity_pct: 80                      # Opacity of the title box on the graphical cover, from 0 to 100. Default: .
       
       # Optional per-element color overrides for the graphical cover:
       # Accepted values: white, black, or a hex color like #f5f5f5.
@@ -197,6 +169,7 @@ project:
       # Optional font weights for the graphical-cover elements:
       # Passed directly to Typst, for example regular, medium, bold, light, or extralight.
       cover_title_weight: bold
+      # title_font: roboto slab # "arial"
       # cover_subtitle_weight: regular
       # cover_author_weight: regular
 
@@ -268,31 +241,25 @@ project:
       # Note: Legacy aliases show_title_page_cover_description, title_page_cover_description,
       # show_title_page_confidentiality_statement, and title_page_confidentiality_statement
       # are still accepted but refer to the colophon equivalents below.
-
+      # logo_titlepage_width: 3.9cm
 # ==============================================================================
 # Colophon Options
 # ==============================================================================
       # The top of the colophon page comes from project.parts.colophon.
       # These settings control the automated bottom publication block.
       
-      # Show the automated colophon publication table when publication values are present. Default: true.
-      show_colophon_publication_info: true
-      
-      # Show the optional cover description row in the colophon publication table. Default: false.
-      show_colophon_cover_description: True
+      show_colophon_publication_info: true      # Show the automated colophon publication table when publication values are present. Default: true.
+      show_colophon_cover_description: True     # Show the optional cover description row in the colophon publication table. Default: false.
       colophon_cover_description: The cover image is a template demonstration background.
       
-      # Show the optional confidentiality statement above the colophon publication table. Default: false.
-      show_colophon_confidentiality_statement: true
-      colophon_confidentiality_statement: This thesis is confidential and cannot be made public.
-      
-      # Optional secondary logo (e.g. company or research group) shown in the colophon when provided.
-      colophon_company_logo: content/assets/JBlogo.svg
+      show_colophon_confidentiality_statement: true       # Show the optional confidentiality statement above the colophon publication table. Default: false.
+      colophon_confidentiality_statement: This thesis is shared using a CC-BY-4.0 license.      
+      colophon_company_logo: content/assets/JBlogo.svg    # Optional secondary logo (e.g. company or research group) shown in the colophon when provided.
 
       # Optional fields shown in the colophon publication table:
       # colophon_printer: Printer name
       # colophon_publisher: Publisher name
-      colophon_copyright: © 2026 Student Name
+      colophon_copyright: © 2026 Freek Pols
 
       
       # Optional custom text shown below the colophon publication table and above the template watermark.
