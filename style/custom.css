@@ -89,3 +89,22 @@ body {
     font-weight: bold;
   }
 }
+
+/* Replace the small project label in footer navigation */
+.myst-footer-link[aria-label^="Previous:"] .myst-footer-link-group {
+  font-size: 0;
+}
+
+.myst-footer-link[aria-label^="Previous:"] .myst-footer-link-group::after {
+  content: "Previous";
+  font-size: 0.75rem;
+}
+
+.myst-footer-link[aria-label^="Next:"] .myst-footer-link-group {
+  font-size: 0;
+}
+
+.myst-footer-link[aria-label^="Next:"] .myst-footer-link-group::after {
+  content: "Next";
+  font-size: 0.75rem;
+}
