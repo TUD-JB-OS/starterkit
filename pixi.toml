@@ -2,7 +2,7 @@
 authors = ["FreekPols <c.f.j.pols@tudelft.nl>"]
 channels = ["conda-forge"]
 name = "starterkit"
-platforms = ["win-64","osx-64", "osx-arm64","linux-64"]
+platforms = ["win-64","osx-64", "osx-arm64", "linux-64"]
 version = "0.2.0"
 
 [tasks]
@@ -18,13 +18,13 @@ scipy = ">=1.18.0,<2"
 ipywidgets = ">=8.1.9,<9"
 
 jupyterlab = ">=4.6.3,<5"
-nodejs = "26.12.1.*"
 mystmd = "1.11.*"
 
 typst = ">=0.15.1,<0.16"
 jupytext = ">=1.19.5,<2"
 
 ipykernel = "*"
+nodejs = ">=26.12.1,<26.13"
 
 [pypi-dependencies]
 jupyterlab_myst = "*"
