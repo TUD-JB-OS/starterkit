@@ -40,7 +40,7 @@ The book will now be deployed again - where now it can actually load GitHub page
 ## Work locally
 You can work directly in the GitHub IDE, but you may prefer to work on the project locally. To do this, you will need Git and Pixi. Pixi is a package manager that installs and manages all dependencies required for the project.
 
-1. **Install git:** If Git is not already installed on your computer, download and install it from the [git website](https://git-scm.com/).
+1. **Install git:** If Git is not already installed on your computer, download and install it from the [git website](https://git-scm.com/).[^git]
 2. **Install pixi:** Download and install Pixi by following the instructions in the [pixi documentation](https://pixi.prefix.dev/latest/installation/).
 3. **Clone the repository:** Open a terminal, such as the VS Code terminal, PowerShell, or another terminal of your choice. Navigate to the folder where you want to store the project and run: `git clone <repository-link>` This creates a local copy of the repository on your computer. Next, navigate into the newly created project folder: `cd <project-folder>`
 4. **Install the project dependencies** From inside the project folder, run: `pixi install` Pixi will install all dependencies required to work on the project.
@@ -51,4 +51,4 @@ Three Pixi tasks are provided to make working with the project easier. You can r
 - **Preview the Jupyter Book:** `pixi run preview` will open a jupyter server which runs your jupyter book as website in the browser
 - **Create a PDF:** `pixi run pdf` will create a pdf version of your project
  
-
+[^git]: Now you have an account on GitHub and software to make use of git, we need to 'connect' these. Open a terminal and run: `git config --global user.name "<username>"` where `<username>` is the name you use in your GitHub account. Next, run: `git config --global user.email "<email address>"` where `<email address>` is the email address you use for your GitHub account.
