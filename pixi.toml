@@ -26,6 +26,7 @@ jupytext = ">=1.19.5,<2"
 ipykernel = "*"
 nodejs = ">=26.12.1,<26.13"
 imagemagick = ">=7.1.2_31,<8"
+jupyterlab-git = ">=0.55.0,<0.56"
 
 [pypi-dependencies]
 jupyterlab_myst = "*"
